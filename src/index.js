@@ -4,11 +4,13 @@ import './index.css';
 import App from './components/App';
 import {createStore} from 'redux';
 import {Provider} from "react-redux";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 // import * as serviceWorker from './serviceWorker';
 
 function playlist(state = ['1 fe','2 fsfd'], action) { // reducer
 	console.log('action: ', action);
+
 	switch (action.type) {
 		case 'ADD_TRACK':
 			return [
@@ -20,7 +22,7 @@ function playlist(state = ['1 fe','2 fsfd'], action) { // reducer
 	return state;
 }
 
-const store = createStore(playlist);
+const store = createStore(playlist,	composeWithDevTools());
 
 ReactDOM.render(
 	<Provider store={store}>
