@@ -17,14 +17,15 @@ const List = styled.ul`
 class App extends Component {
 
 	addTrack() {
-		// console.log('this.trackInput:', this.trackInput.value);
+
 		this.props.onAddTrack(this.trackInput.value);
 		this.trackInput.value = '';
 	}
 
 	render() {
-		console.log('this.props.testStore', this.props.testStore);
-		let testStore = _.get(this.props, 'testStore');
+		// console.log('this.props.testStore', this.props.testStore);
+		let testStore = _.get(this.props, 'store.tracks');
+
 		return (
 			<div>
 				<Input type="text" ref={(input) => {
@@ -47,7 +48,7 @@ class App extends Component {
 
 export default connect(
 	state => ({//
-		testStore: state
+		store: state
 	}),
 	dispatch => ({
 		onAddTrack: (trackName) => {
