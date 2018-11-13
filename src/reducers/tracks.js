@@ -1,4 +1,4 @@
-const defaultState = ['1 fe', '2 fsfd'];
+const defaultState = [];
 
 export default function (state = defaultState, action) { // reducer
 	console.log('state: ', state, 'action: ', action);
@@ -6,7 +6,6 @@ export default function (state = defaultState, action) { // reducer
 	if (action.type === 'ADD_TRACK') {
 		return [...state, action.payload];
 	} else {
-		return [state];
+		return state;
 	}
-
 }

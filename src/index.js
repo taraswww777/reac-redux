@@ -4,29 +4,13 @@ import './index.css';
 import App from './components/App';
 import {createStore} from 'redux';
 import {Provider} from "react-redux";
+import reducers from "./reducers";
 import {composeWithDevTools} from "redux-devtools-extension";
 
-// import * as serviceWorker from './serviceWorker';
-const defaultState = {
-	tracks: ['1 fe', '2 fsfd'],
-	playlist: ['1 fe', '2 fsfd'],
-};
 
-function playlist(state = defaultState, action) { // reducer
-	console.log('action: ', action);
 
-	switch (action.type) {
-		case 'ADD_TRACK':
-			return {
-				...state,
-				tracks: [...state.tracks, action.payload]
-			};
-	}
 
-	return state;
-}
-
-const store = createStore(playlist, composeWithDevTools());
+const store = createStore(reducers, composeWithDevTools());
 
 ReactDOM.render(
 	<Provider store={store}>
