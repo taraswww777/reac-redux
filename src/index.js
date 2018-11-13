@@ -1,19 +1,13 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import * as serviceWorker from './serviceWorker';
-//
-// ReactDOM.render(<App />, document.getElementById('root'));
-//
-// // If you want your app to work offline and load faster, you can change
-// // unregister() to register() below. Note this comes with some pitfalls.
-// // Learn more about service workers: http://bit.ly/CRA-PWA
-// serviceWorker.unregister();
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './components/App';
 import {createStore} from 'redux';
+import {Provider} from "react-redux";
 
-function playlist(state = [], action) {
+// import * as serviceWorker from './serviceWorker';
+
+function playlist(state = ['1 fe','2 fsfd'], action) { // reducer
 	console.log('action: ', action);
 	switch (action.type) {
 		case 'ADD_TRACK':
@@ -28,9 +22,15 @@ function playlist(state = [], action) {
 
 const store = createStore(playlist);
 
-store.subscribe(() => {
-	console.log('store subscribe: ', store.getState());
-});
+ReactDOM.render(
+	<Provider store={store}>
+		<App/>
+	</Provider>, document.getElementById('root'));
 
-store.dispatch({type: 'ADD_TRACK', payload: 'wewwe'});
-store.dispatch({type: 'ADD_TRACK', payload: 'wewwe3'});
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+// serviceWorker.unregister();
+
+
+// store.dispatch({type: 'ADD_TRACK', payload: 'wewwe'});
